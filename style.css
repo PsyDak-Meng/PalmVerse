@@ -29,7 +29,7 @@ header .navbar {
 }
 
 .navbar .logo {
-  color: #fff;
+  color: rgb(11, 7, 1);
   font-weight: bold; 
   font-size: 2.1rem;
   text-decoration: none;
@@ -46,16 +46,16 @@ header .navbar {
 }
 
 .navbar a {
-  color: #fff;
+  color: rgb(4, 3, 3);
   text-decoration: none;
   transition: 0.2s ease;
 }
 
 .navbar a:hover {
-  color: #C06B3E;
+  color: #fffcfb;
 }
 
-.hero-section {
+.hero-section{
   height: 100vh;
   background-image: url("https://onyxhealth.com/wp-content/uploads/2022/08/Deaf-people-awareness.jpg");
   background-position: center;
@@ -97,8 +97,8 @@ header .navbar {
 }
 
 .hero-section .content button:hover {
-  color: #fff;
-  background: #C06B3E;
+  color: rgb(255, 255, 255);
+  background: #ed8e0a;
 }
 
 #close-menu-btn {
@@ -151,12 +151,26 @@ header .navbar {
     transition: left 0.2s ease;
   }
 
+  .navbar a[href="about.html"] {
+
+    display: inline-block; 
+    margin-right: 20px; 
+    color: black
+  }
+
+  .navbar a[href="howto.html"] {
+
+    display: inline-block; 
+    margin-right: 20px; 
+    color: black
+  }
+
   header.show-mobile-menu .navbar .menu-links {
     left: 0;
   }
 
   .navbar a {
-    color: #000;
+    color: #0000;
   }
 
   .hero-section .content {
@@ -197,4 +211,16 @@ header .navbar {
     font-weight: bold; 
   }
   
+  .content body {
+    color: white; 
+    font-weight: bold; 
+  }
+
+.hero-section1 {
+  height: 100vh;
+  background-image: url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw8PDQ0PDw8PDw8NDQ0NDQ8PDw8PDw8NFREWFhUVFRUYHSggGBolHRUVITEhJSkrLi4uFx8zODMtNygtLisBCgoKBQUFDgUFDisZExkrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIALcBEwMBIgACEQEDEQH/xAAXAAEBAQEAAAAAAAAAAAAAAAAAAQIH/8QAGBABAQEBAQAAAAAAAAAAAAAAABEB8EH/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A7DjSYoAKCKKAEWAEWKDMWLFgMxYsAQjQDMI0AzCNAMwikBIjUIDKRqEBmI1EBBUBBQEZaAYFigAoAKAsMUCKKBAUAFBBQEUAEUBFABFAQUBkUBmCgMxGkgMioCCgJ3oAAKAuCgKKAoACgAAAAAAAAAAAAAAAAIKgIjSAyjSaDIqAd6ixAXAXAVUxQVUUBQAAAAAAAAAAAVAAAAAAAAAEFQERpNBlF1AQAEzGkawFxcRQUAFAAAAAAAAAAAAVAAAAAAAAABAARUBE1UBAQDGsZxrAVUxQUAFAAAAAAAAAAAAAAAAAAAAAARUARUBNTWtZ0ERUAaZxrAVUUFABRFAAAAAAAAAAAAAAAAAAAAARUARUBE1UBICAYuMtYDSs4oKqKAqKAAAAAAAAAAAAAAAAAAACAAgKyqaAyqaAggC4yoNYuM4uaDSs40CiKAqAKIAoigAAAAAAAAAACAAICoIAhqaBqACAAyrKg0tZqg1isNZoNKzVBRFBRAFEUAAAAAAAAAEBUoACICpRN0BEpQEABWb0ATBnNazQUQBpayoNZq1mgN0Zq0Gis0oNVWSg1RKgNCUoKIUFKzSg0lSlBalSpQaqVKgLUqAFKIACaBRKgM5rVAFUAFAAqgBVACgClABagC0qALUoAUoAUqAFKAJoAJQAQACs7oAl6oAP/9k=)
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
 }
