@@ -3,6 +3,9 @@ import mediapipe as mp
 import imutils
 import numpy as np
 from numpy.typing import NDArray
+from tqdm import tqdm
+from pandas import DataFrame
+from CONSTANTS import WINDOW_SIZE
 
 class HandTracker():
     def __init__(self, img_path=None,):
@@ -17,7 +20,21 @@ class HandTracker():
     # Processing the input image
     def process_image(self,img) -> type:
         # Converting the input to grayscale
-        gray_image = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+        if len(img.shape) == 3: 
+            gray_image = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+        # Reverse grayscale back to rgb
+        elif len(img.shape) == 2:
+            img = img.astype(np.float32)
+            gray_image = cv2.cvtColor(img,cv2.COLOR_GRAY2RGB)  
+            #print(gray_image.max(),gray_image.min(),gray_image)
+            gray_image = gray_image*255.0
+            gray_image = np.clip(gray_image, 0, 255).astype(np.uint8)
+            gray_image = imutils.resize(gray_image, width=WINDOW_SIZE, height=WINDOW_SIZE)
+
+        else:
+            print("Wrong image input!")
+            raise SystemError
+
         results = self.hands.process(gray_image)
 
         # Returning the detected hands to calling function
@@ -28,16 +45,15 @@ class HandTracker():
         if results.multi_hand_landmarks:
             hand_count = 0
             for handLms in results.multi_hand_landmarks:
-                print(f"this is {hand_count+1} hand!")
+                #print(f"this is {hand_count+1} hand!")
                 for id, lm in enumerate(handLms.landmark):
                     h, w, c = img.shape
-
                     # Finding the coordinates of each landmark
                     cx, cy = int(lm.x * w), int(lm.y * h)
 
                     # Printing each landmark ID and coordinates
                     # on the terminal
-                    print(id, cx, cy)
+                    #print(id, cx, cy)
                     self.results[(20*hand_count+id),0] = cx
                     self.results[(20*hand_count+id),0] = cy
 
@@ -53,13 +69,16 @@ class HandTracker():
     
 
     def track(self, frame=None): 
-        """ Use frame for cam.py input, leave as None for local testing. """
+        """ frame control:
+        Ndarray: use frame for cam.py input, 
+        NoneType: local testing. """
 
         if frame is None:
+            print("Local testing...")
             while True:
                 # Taking the input
                 success, image = self.cap.read()
-                image = imutils.resize(image, width=500, height=500)
+                image = imutils.resize(image, width=WINDOW_SIZE, height=WINDOW_SIZE)
                 results = self.process_image(image)
                 self.draw_hand_connections(image,results)
 
@@ -70,14 +89,58 @@ class HandTracker():
                 if cv2.waitKey() == ord('q'):
                     self.cap.release()
                     cv2.destroyAllWindows()
+                return image, None
         else:
             while True:
                 image = frame
-                image = imutils.resize(image, width=500, height=500)
+                image = imutils.resize(image, width=WINDOW_SIZE, height=WINDOW_SIZE)
                 results = self.process_image(image)
-                image = self.draw_hand_connections(image,results)
+                 # Return handlandmarks
+                hand_landmarks = np.zeros((1,84))
+                if results.multi_hand_landmarks:
+                    hand_count = 0
+                    for handLms in results.multi_hand_landmarks:
+                        for id, lm in enumerate(handLms.landmark):
+                            h, w, c = image.shape
+                            # Finding the coordinates of each landmark
+                            cx, cy = int(lm.x * w), int(lm.y * h)
 
-                return image
+                            #print(id, cx, cy)
+                            hand_landmarks[0,20*hand_count+id] = cx
+                            hand_landmarks[0,20*hand_count+id] = cy
+
+                        hand_count += 1
+
+                image = self.draw_hand_connections(image,results)
+                
+                return image, hand_landmarks
+        
+
+    # Training data processing 
+    def landmarks_from_grayscale(self,img:str,img_size) -> NDArray: # 28*28 pixels grayscale images
+        cap = cv2.VideoCapture(img)
+        success, image = cap.read()
+
+        hand_landmarks = np.zeros((1,84))
+        image = imutils.resize(image, width=img_size, height=img_size)
+        results = self.process_image(image)
+
+        if results.multi_hand_landmarks:
+            hand_count = 0
+            for handLms in results.multi_hand_landmarks:
+                for id, lm in enumerate(handLms.landmark):
+                    h, w, c = image.shape
+                    # Finding the coordinates of each landmark
+                    cx, cy = int(lm.x * w), int(lm.y * h)
+
+                    #print(id, cx, cy)
+                    hand_landmarks[0,20*hand_count+id] = cx
+                    hand_landmarks[0,20*hand_count+id] = cy
+
+                hand_count += 1
+
+        #print(f"shape of traing array is {hand_landmarks.shape}")
+        return hand_landmarks
 
 
     
