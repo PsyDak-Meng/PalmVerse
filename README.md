@@ -21,7 +21,7 @@ To use PalmVerse, follow these instructions:
 - 🔊 **Real-time Sign Language Translation**
 - 💻 **User-Friendly Interface**
 - 🌐 **Multi-lingual Support**: [upcoming~]
-![alt text](http://url/to/img.png)
+<img src="https://github.com/PsyDak-Meng/PalmVerse/blob/main/images/PALMVERSE.jpg" height="500">
 
 ## Contributing
 We welcome contributions from the community to improve PalmVerse. If you'd like to contribute, please follow these steps:
