@@ -23,6 +23,8 @@ To use PalmVerse, follow these instructions:
 - 🌐 **Multi-lingual Support**: [upcoming~]
 <img src="https://github.com/PsyDak-Meng/PalmVerse/blob/main/images/PALMVERSE.jpg" height="500">
 
+**🎉Like what you see ?** Consider leaving a star for our project~!
+
 ## Contributing
 We welcome contributions from the community to improve PalmVerse. If you'd like to contribute, please follow these steps:
 
