@@ -1,0 +1,324 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold; 
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+}
+
+header .navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: white;
+  font-weight: bold; 
+
+}
+
+.navbar .logo {
+  color: rgb(251, 250, 248);
+  font-weight: bold; 
+  font-size: 2.1rem;
+  text-decoration: none;
+}
+
+.navbar .logo span {
+  color: #C06B3E;
+}
+
+.navbar .menu-links {
+  display: flex;
+  list-style: none;
+  gap: 35px;
+}
+
+.navbar a {
+  color: rgb(250, 247, 247);
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.navbar a:hover {
+  color: #fffcfb;
+}
+
+.hero-section{
+  height: 100vh;
+  background-image: url("https://onyxhealth.com/wp-content/uploads/2022/08/Deaf-people-awareness.jpg");
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  opacity: 1;
+}
+
+.hero-section .content {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  color: #fff;
+}
+
+.hero-section .content h2 {
+  font-size: 3rem;
+  max-width: 600px;
+  line-height: 70px;
+}
+
+.hero-section .content p {
+  font-weight: 300;
+  max-width: 600px;
+  margin-top: 15px;
+}
+
+.hero-section .content button {
+  background: #fff;
+  padding: 12px 30px;
+  border: none;
+  font-size: 1rem;
+  border-radius: 6px;
+  margin-top: 38px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.2s ease;
+}
+
+.hero-section .content button:hover {
+  color: rgb(255, 255, 255);
+  background: #ed8e0a;
+  position: relative;
+}
+
+
+i:hover {
+  color: #AEC6CF;
+  transition: 0.4s;
+  cursor: pointer;
+}
+
+.rectangle{
+  border-radius: 5% 5%;;
+  width:90vw;
+  height:77.5vh;
+  position:absolute;
+  top:15%;
+  left:5%;
+  z-index: 1;
+  }
+
+.cam{
+  width:80vw;
+  height:60vh;
+  position:absolute;
+  top:20%;
+  left:-8%;
+  z-index: 1
+}
+
+
+.text-box {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+  top: -20%;
+  width: 35%; /* Adjust the width as needed */
+  margin: 0 auto; /* Center the textbox horizontally */
+  position:relative;
+  left:12%;
+  height: 20%;
+  overflow: hidden;
+  resize: both;
+  z-index:1000;
+}
+input[type="text"] {
+  width: 80%; /* Make the input box fill the width of the parent container */
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 10px; /* Add some space between the input and the button */
+  box-sizing: border-box; /* Include padding and border in the width */
+  height: 100%; /* Set the height of the input box */
+  width: 100%;
+  resize: vertical; /* Allow vertical resizing */
+}
+.text-box[contenteditable]:empty::before {
+  content: "Placeholder still possible";
+  color: gray;
+}
+
+.speak-button{
+  left:60%;
+  top: -5%;
+  position: relative;
+  background-color: #04AA6D; /* Green */
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  z-index:1000;
+}
+
+.delete-button{
+  left: 62%;
+  top: -5%;
+  position: relative;
+  background-color: #a91b0f; /* Green */
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  z-index:1000;
+}
+
+.translate-button{
+  left: 64%;
+  top: -5%;
+  width: 10%;
+  position: relative;
+  background-color: #0fb2bafb; /* Green */
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  z-index:1000;
+}
+
+#close-menu-btn {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
+  display: none;
+}
+
+#hamburger-btn {
+  color: #fff;
+  cursor: pointer;
+  display: none;
+}
+
+@media (max-width: 768px) {
+  header {
+    padding: 10px;
+  }
+
+  header.show-mobile-menu::before {
+    content: "";
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(5px);
+  }
+
+  .navbar .logo {
+    font-size: 1.7rem;
+  }
+
+    
+  #hamburger-btn, #close-menu-btn {
+    display: block;
+  }
+
+  .navbar .menu-links {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100vh;
+    background: #fff;
+    flex-direction: column;
+    padding: 70px 40px 0;
+    transition: left 0.2s ease;
+  }
+
+  .navbar a[href="about.html"] {
+
+    display: inline-block; 
+    margin-right: 20px; 
+    color: black
+  }
+
+  .navbar a[href="howto.html"] {
+
+    display: inline-block; 
+    margin-right: 20px; 
+    color: black
+  }
+
+  header.show-mobile-menu .navbar .menu-links {
+    left: 0;
+  }
+
+  .navbar a {
+    color: #0000;
+  }
+
+  .hero-section .content {
+    text-align: center;
+  }
+
+  .hero-section .content :is(h2, p) {
+    max-width: 100%;
+  }
+
+  .hero-section .content h2 {
+    font-size: 2.3rem;
+    line-height: 60px;
+  }
+  
+  .hero-section .content button {
+    padding: 9px 18px;
+  }
+
+  .content {
+    display: flex;
+    align-items: center;
+    color: white
+  }
+  
+  .content h2 {
+    font-weight: bold;
+    color: white;
+  }
+  
+  .content label {
+    font-weight: bold; 
+    color: white;
+  }
+  
+  .content select {
+    color: white; 
+    font-weight: bold; 
+  }
+  
+  .content body {
+    color: white; 
+    font-weight: bold; 
+  }
+
+.hero-section1 {
+  height: 100vh;
+  background-image: url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw8PDQ0PDw8PDw8NDQ0NDQ8PDw8PDw8NFREWFhUVFRUYHSggGBolHRUVITEhJSkrLi4uFx8zODMtNygtLisBCgoKBQUFDgUFDisZExkrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIALcBEwMBIgACEQEDEQH/xAAXAAEBAQEAAAAAAAAAAAAAAAAAAQIH/8QAGBABAQEBAQAAAAAAAAAAAAAAABEB8EH/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A7DjSYoAKCKKAEWAEWKDMWLFgMxYsAQjQDMI0AzCNAMwikBIjUIDKRqEBmI1EBBUBBQEZaAYFigAoAKAsMUCKKBAUAFBBQEUAEUBFABFAQUBkUBmCgMxGkgMioCCgJ3oAAKAuCgKKAoACgAAAAAAAAAAAAAAAAIKgIjSAyjSaDIqAd6ixAXAXAVUxQVUUBQAAAAAAAAAAAVAAAAAAAAAEFQERpNBlF1AQAEzGkawFxcRQUAFAAAAAAAAAAAAVAAAAAAAAABAARUBE1UBAQDGsZxrAVUxQUAFAAAAAAAAAAAAAAAAAAAAAARUARUBNTWtZ0ERUAaZxrAVUUFABRFAAAAAAAAAAAAAAAAAAAAARUARUBE1UBICAYuMtYDSs4oKqKAqKAAAAAAAAAAAAAAAAAAACAAgKyqaAyqaAggC4yoNYuM4uaDSs40CiKAqAKIAoigAAAAAAAAAACAAICoIAhqaBqACAAyrKg0tZqg1isNZoNKzVBRFBRAFEUAAAAAAAAAEBUoACICpRN0BEpQEABWb0ATBnNazQUQBpayoNZq1mgN0Zq0Gis0oNVWSg1RKgNCUoKIUFKzSg0lSlBalSpQaqVKgLUqAFKIACaBRKgM5rVAFUAFAAqgBVACgClABagC0qALUoAUoAUqAFKAJoAJQAQACs7oAl6oAP/9k=)
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}

@@ -1,0 +1,6 @@
+WINDOW_SIZE = 800
+FPS = 12
+FRAME_RATE = 12
+PIXEL_WINDOW = 100
+CONFIDENCE = 0.6
+LPF = 8 # loops per frame

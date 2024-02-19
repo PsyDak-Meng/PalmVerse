@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text-to-Speech Demo</title>
+    <script src="https://code.responsivevoice.org/responsivevoice.js?key=6AqfGK6s"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+
+<div>
+    <label for="text">Enter text:</label>
+    <textarea id="text" cols="45" rows="3">Hello, this is the place. Hello, hello.</textarea>
+</div>
+
+<div>
+    <label for="voiceselection">Select a voice:</label>
+    <select id="voiceselection"></select>
+</div>
+
+<div>
+    <input 
+        onclick="readText();" 
+        type="button" 
+        value="Read this for me" 
+    />
+</div>
+
+<script>
+    // Function to populate the voice selection dropdown
+    function populateVoiceList() {
+        var voicelist = responsiveVoice.getVoices();
+        var vselect = $("#voiceselection");
+
+        $.each(voicelist, function() {
+            vselect.append($("<option />").val(this.name).text(this.name));
+        });
+    }
+
+    // Function to read the entered text using the selected voice
+    function readText() {
+        var textToRead = $('#text').val();
+        var selectedVoice = $('#voiceselection').val();
+        responsiveVoice.speak(textToRead, selectedVoice);
+    }
+
+    // Populate voice list on page load
+    $(document).ready(function() {
+        populateVoiceList();
+    });
+</script>
+
+</body>
+</html>
